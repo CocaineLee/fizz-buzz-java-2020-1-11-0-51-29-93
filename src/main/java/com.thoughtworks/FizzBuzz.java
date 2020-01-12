@@ -4,13 +4,21 @@ package com.thoughtworks;
 public class FizzBuzz {
 
   public String say(Integer number) {
-    if ((number % 3 == 0 || isContainThree(number))&&!isContainFive(number)) {
-      return "Fizz";
+    String result = "";
+    if ((number % 3 == 0 || isContainThree(number)) && !isContainFive(number)) {
+      result += "Fizz";
     }
-    if (number % 5 == 0 || isContainFive(number)) {
-      return "Buzz";
+    if ((number % 5 == 0 || isContainFive(number)) && !isContainSeven(number)) {
+      result += "Buzz";
     }
-    return String.valueOf(number);
+    if ((number % 7 == 0 || isContainSeven(number)) && !isContainThree(number)) {
+      result += "Whizz";
+    }
+    return result.isEmpty() ? String.valueOf(number) : result;
+  }
+
+  private boolean isContainSeven(Integer number) {
+    return String.valueOf(number).contains("7");
   }
 
   private boolean isContainThree(Integer number) {
@@ -19,5 +27,12 @@ public class FizzBuzz {
 
   private boolean isContainFive(Integer number) {
     return String.valueOf(number).contains("5");
+  }
+
+  public static void main(String[] args) {
+    FizzBuzz fizzBuzz = new FizzBuzz();
+    for (int i = 1; i < 300; i++) {
+      System.out.println(i + "says:" + fizzBuzz.say(i));
+    }
   }
 }

@@ -4,7 +4,7 @@ class FizzBuzzTest extends spock.lang.Specification {
 
   def fizzBuzz = new FizzBuzz()
 
-  def 'say Fizz when times 3 or contains 3'() {
+  def 'say Fizz when times 3 or contains 3,but dont contains 5'() {
     expect:
       fizzBuzz.say(number) == result
     where:
@@ -15,13 +15,23 @@ class FizzBuzzTest extends spock.lang.Specification {
       53     | "Buzz" | "contain 5"
   }
 
-  def 'say Buzz when times 5 or contains 5'() {
+  def 'say Buzz when times 5 or contains 5,but dont contains 7'() {
     expect:
       fizzBuzz.say(number) == result
     where:
       number | result | description
       10     | "Buzz" | "times 5"
       59     | "Buzz" | "contain 5"
+  }
+
+  def 'say Whizz when times 7 or contains 7,but not contains 3'() {
+    expect:
+      fizzBuzz.say(number) == result
+    where:
+      number | result  | description
+      7      | "Whizz" | "times 7"
+      17     | "Whizz" | "contain 7"
+      63     | "Fizz"  | "contain 3" 
   }
 
 }
