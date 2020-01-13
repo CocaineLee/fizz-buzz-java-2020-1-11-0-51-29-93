@@ -8,11 +8,20 @@ public class FizzBuzz {
     if ((number % 3 == 0 || isContainThree(number)) && !isContainFive(number)) {
       result += "Fizz";
     }
-    if ((number % 5 == 0 || isContainFive(number)) && !isContainSeven(number)) {
+    if (isContainFive(number) && !isContainSeven(number)) {
       result += "Buzz";
     }
-    if ((number % 7 == 0 || isContainSeven(number)) && !isContainThree(number)) {
-      result += "Whizz";
+    if (number % 5 == 0 && !isContainThree(number) && !isContainFive(number)) {
+      result += "Buzz";
+    }
+    if (number % 7 == 0) {
+      if (isContainThree(number)) {
+        if (isContainFive(number)) {
+          result += "Whizz";
+        }
+      } else {
+        result += "Whizz";
+      }
     }
     return result.isEmpty() ? String.valueOf(number) : result;
   }
